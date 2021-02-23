@@ -57,3 +57,14 @@ Route::get('grant-password', function () {
 
     dd($response->json());
 });
+
+Route::get('grant-client', function () {
+    $response = Http::post(env('API_URL').'oauth/token', [
+        'grant_type' => 'client_credentials',
+        'client_id' => env('CLIENT_ID_GRANT_CLIENT'),
+        'client_secret' => env('CLIENT_SECRET_GRANT_CLIENT'),
+        'scope' => '',
+    ]);
+
+    dd($response->json());
+});
